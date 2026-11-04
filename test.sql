@@ -16,7 +16,7 @@ CREATE TABLE album (
 );
 
 CREATE TABLE artist_song (
-    artist_id INT REFERENCES artists(artist_id) ON DELETE CASCADE,
-    song_id INT REFERENCES song(song_id) ON DELETE CASCADE,
+    artist_id INT REFERENCES artists(artist_id) ON DELETE CASCADE, --Raderar kopplingen om artisten tas bort
+    song_id INT REFERENCES song(song_id) ON DELETE CASCADE, --Raderar kopplingen om låten tas bort
     PRIMARY KEY (artist_id, song_id)
 );
