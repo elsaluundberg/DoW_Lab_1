@@ -60,3 +60,6 @@ SELECT * FROM artists where artist_id = 1;
 DELETE FROM artists WHERE artist_id = 2; --Tar bort The Weeknd och kopplingen i artist_song tabellen    
 SELECT * FROM artists;
 SELECT * FROM artist_song; --Kopplingen mellan The Weeknd och Blinding Lights är borta
+SELECT * FROM song; --Blinding Lights finns fortfarande kvar i song tabellen        
+
+DELETE FROM song WHERE song_id = 4; --Tar bort Easy on Me och kopplingen i artist_song tabellen
