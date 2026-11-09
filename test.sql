@@ -9,7 +9,7 @@ CREATE TABLE song (
     song_id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     length INT NOT NULL,
-    album_id INT REFERENCES album(album_id)
+    album_id INT REFERENCES album(album_id) ON DELETE CASCADE --Raderar låten om albumet tas bort
 );
 
 CREATE TABLE album (
@@ -49,12 +49,13 @@ INSERT INTO artist_song (artist_id, song_id) VALUES (3, 3); --  Adele - Easy on 
 ---step3 SELECT------------------------
 --Hämta alla artister och deras låtar
 SELECT * FROM artists;
-SELECT * FROM song;
+SELECT * FROM song WHERE song_id = 1;
 SELECT * FROM album;    
 
 --step4 UPDATE------------------------
 update artists set name = 'Ariana Grande' where artist_id = 1;
 SELECT * FROM artists where artist_id = 1;
+update song set name = 'Positions' where song_id = 1;
 
 --step5 DELETE------------------------
 DELETE FROM artists WHERE artist_id = 2; --Tar bort The Weeknd och kopplingen i artist_song tabellen    
@@ -63,3 +64,4 @@ SELECT * FROM artist_song; --Kopplingen mellan The Weeknd och Blinding Lights ä
 SELECT * FROM song; --Blinding Lights finns fortfarande kvar i song tabellen        
 
 DELETE FROM song WHERE song_id = 4; --Tar bort Easy on Me och kopplingen i artist_song tabellen
+SELECT * FROM artist_song;
