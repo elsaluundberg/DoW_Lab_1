@@ -75,4 +75,27 @@ SELECT customer_id, country, city FROM customers ORDER BY country, city;
 SELECT last_name FROM employees WHERE last_name LIKE '%an';
 SELECT title, first_name, last_name FROM employees WHERE title LIKE '%Vice%' OR title LIKE '%President%' OR title LIKE '%Manager%';
 
---- Uppgift 2.8 till -------------------------
+--- Uppgift 2.8 till 2.11 -------------------------
+SELECT product_name, unit_price , unit_price * 1.07 AS price_increase FROM products;
+SELECT product_name, unit_price * units_in_stock AS inventory_value FROM products;  
+SELECT product_name FROM products WHERE products.units_in_stock < reorder_level;
+SELECT product_name, units_in_stock + units_on_order as total_units from products where units_in_stock + units_on_order  < reorder_level;
+
+---- Uppgift 2.12 & 2.13 -------------------------
+SELECT category_id from products where product_name = 'Lakkalikööri';
+Select category_name from categories where category_id = 1;
+-- Går också att skriva på en rad
+Select category_name from categories where category_id = (SELECT category_id from products where product_name = 'Lakkalikööri');
+
+
+select product_name, supplier_id from products where product_name = 'Gravad lax';
+select company_name from suppliers where supplier_id = 17;
+select company_name, (select product_name from products where product_name = 'Gravad lax') as product_name from suppliers where supplier_id = (select supplier_id from products where product_name = 'Gravad lax');
+
+--- Uppgift 2.15 & 2.16 -------------------------
+
+select count(*) as antal from employees where title = 'Sales Representative';
+
+select sum((unit_price * quantity) * (1 - discount)) as total_sales from order_details where order_id in (select order_id from orders where order_date = '1996-12-12');
+
+-- Uppgift 2.19 till ---------
