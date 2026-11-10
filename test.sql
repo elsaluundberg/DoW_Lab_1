@@ -9,7 +9,7 @@ CREATE TABLE song (
     song_id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     length INT NOT NULL,
-    album_id INT REFERENCES album(album_id) ON DELETE CASCADE --Raderar låten om albumet tas bort
+    album_id INT REFERENCES album(album_id) ON DELETE CASCADE --Raderar låten om albumet tas bortc
 );
 
 CREATE TABLE album (
@@ -65,3 +65,14 @@ SELECT * FROM song; --Blinding Lights finns fortfarande kvar i song tabellen
 
 DELETE FROM song WHERE song_id = 4; --Tar bort Easy on Me och kopplingen i artist_song tabellen
 SELECT * FROM artist_song;
+
+------- uppgift 2.1 till 2.7 -------------------------
+SELECT last_name, first_name from employees;
+SELECT home_phone FROM employees WHERE title = 'Vice President, Sales';
+SELECT company_name, contact_name, contact_title FROM suppliers WHERE company_name = 'Svensk Sjöföda AB'; 
+SELECT last_name, first_name, birth_date FROM employees Order by birth_date DESC;
+SELECT customer_id, country, city FROM customers ORDER BY country, city;
+SELECT last_name FROM employees WHERE last_name LIKE '%an';
+SELECT title, first_name, last_name FROM employees WHERE title LIKE '%Vice%' OR title LIKE '%President%' OR title LIKE '%Manager%';
+
+--- Uppgift 2.8 till -------------------------
