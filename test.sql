@@ -109,9 +109,9 @@ update products set unit_price = unit_price * 1.2 where category_id = 4;
 
 select supplier_id, company_name from suppliers where company_name = 'Tokyo Traders';
 select product_name, unit_price from products where supplier_id = 4;
-update products set unit_price = unit_price * 1.1 where supplier_id = 4;
+update products set unit_price = unit_price * 1.1 where supplier_id = (select supplier_id from suppliers where company_name = 'Tokyo Traders');
 --med join
-SELECT products.product_name, products.unit_price, suppliers.company_name FROM products JOIN suppliers ON products.supplier_id = suppliers.supplier_id WHERE suppliers.supplier_id = 4;
+SELECT products.product_name, products.unit_price, suppliers.company_name FROM products JOIN suppliers ON products.supplier_id = suppliers.supplier_id WHERE suppliers.company_name = 'Tokyo Traders';
 
 --uppgift 3.1---
 CREATE PROCEDURE increase_prices()
@@ -123,10 +123,10 @@ BEGIN
 
 END;
 $$;
+
 select unit_price from products;
 call increase_prices();
 select unit_price from products;
-
 --- Uppgift 3.3----
 
 create view vinfo
