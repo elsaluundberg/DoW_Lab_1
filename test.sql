@@ -97,5 +97,57 @@ select company_name, (select product_name from products where product_name = 'Gr
 select count(*) as antal from employees where title = 'Sales Representative';
 
 select sum((unit_price * quantity) * (1 - discount)) as total_sales from order_details where order_id in (select order_id from orders where order_date = '1996-12-12');
+-- med join
+SELECT SUM((order_details.unit_price * order_details.quantity) * (1 - order_details.discount)) AS total_sales 
+FROM order_details
+JOIN orders ON order_details.order_id = orders.order_id
+WHERE orders.order_date = '1996-12-12';
 
--- Uppgift 2.19 till ---------
+-- Uppgift 2.19 & 2.20 ---------
+select product_name, unit_price from products where category_id = 4;
+update products set unit_price = unit_price * 1.2 where category_id = 4;
+
+select supplier_id, company_name from suppliers where company_name = 'Tokyo Traders';
+select product_name, unit_price from products where supplier_id = 4;
+update products set unit_price = unit_price * 1.1 where supplier_id = 4;
+--med join
+SELECT products.product_name, products.unit_price, suppliers.company_name FROM products JOIN suppliers ON products.supplier_id = suppliers.supplier_id WHERE suppliers.supplier_id = 4;
+
+--uppgift 3.1---
+CREATE PROCEDURE increase_prices()
+LANGUAGE plpgsql
+AS $$
+BEGIN
+
+    update products set unit_price = unit_price * 1.05;
+
+END;
+$$;
+select unit_price from products;
+call increase_prices();
+select unit_price from products;
+
+--- Uppgift 3.3----
+
+create view vinfo
+as
+select products.product_name, products.unit_price, categories.category_name
+from products
+join categories on products.category_id = categories.category_id;
+
+select * from vinfo;
+
+--- uppgift 3.5 ----
+select product_name, unit_price from products where product_id in(1,2);
+
+BEGIN;
+UPDATE products SET unit_price = unit_price * 1.1 WHERE product_id IN (1, 2);
+select product_name, unit_price from products where product_id in(1,2);
+ROLLBACK;
+
+
+BEGIN;
+UPDATE products SET unit_price = unit_price * 1.1 WHERE product_id IN (1, 2);
+UPDATE products SET unit_price = unit_price * 1.1 WHERE hejbaberiba IN (1, 2);
+select product_name, unit_price from products where product_id in(1,2);
+ROLLBACK;
