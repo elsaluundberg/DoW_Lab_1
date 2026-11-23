@@ -1,3 +1,7 @@
+-- referensintegritet mellan tabellerna
+INSERT INTO artist_song (artist_id, song_id) VALUES (999, 1);
+
+
 
 ----step1 CREATE--------------
 CREATE TABLE artists (
@@ -53,12 +57,12 @@ SELECT * FROM song WHERE song_id = 1;
 SELECT * FROM album;    
 
 --step4 UPDATE------------------------
-update artists set name = 'Ariana Grande' where artist_id = 1;
+update artists set name = 'Rihanna' where artist_id = 3;
 SELECT * FROM artists where artist_id = 1;
 update song set name = 'Positions' where song_id = 1;
 
 --step5 DELETE------------------------
-DELETE FROM artists WHERE artist_id = 2; --Tar bort The Weeknd och kopplingen i artist_song tabellen    
+DELETE FROM artists WHERE artist_id = 1; --Tar bort The Weeknd och kopplingen i artist_song tabellen    
 SELECT * FROM artists;
 SELECT * FROM artist_song; --Kopplingen mellan The Weeknd och Blinding Lights är borta
 SELECT * FROM song; --Blinding Lights finns fortfarande kvar i song tabellen        
