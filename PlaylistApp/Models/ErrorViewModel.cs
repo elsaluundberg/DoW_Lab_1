@@ -1,4 +1,4 @@
-namespace MittMvcProjekt.Models;
+namespace PlaylistApp.Models;
 
 public class ErrorViewModel
 {

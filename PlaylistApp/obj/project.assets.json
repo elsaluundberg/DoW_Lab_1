@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\elsal\\edu\\WoB\\MittMvcProjekt\\MittMvcProjekt.csproj",
-      "projectName": "MittMvcProjekt",
-      "projectPath": "C:\\Users\\elsal\\edu\\WoB\\MittMvcProjekt\\MittMvcProjekt.csproj",
+      "projectUniqueName": "C:\\Users\\elsal\\edu\\WoB\\PlaylistApp\\PlaylistApp.csproj",
+      "projectName": "PlaylistApp",
+      "projectPath": "C:\\Users\\elsal\\edu\\WoB\\PlaylistApp\\PlaylistApp.csproj",
       "packagesPath": "C:\\Users\\elsal\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\elsal\\edu\\WoB\\MittMvcProjekt\\obj\\",
+      "outputPath": "C:\\Users\\elsal\\edu\\WoB\\PlaylistApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\elsal\\AppData\\Roaming\\NuGet\\NuGet.Config"
