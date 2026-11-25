@@ -7,6 +7,25 @@
 <div class="container mt-4">
     <h2>@ViewData["Title"]</h2>
 
+    <!-- 1. Visar data skickad via ViewBag -->
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-info">
+            @ViewBag.Message
+        </div>
+    }
+
+    <!-- 2. Visar data skickad via ViewData -->
+    <p><strong>Totalt antal låtar i listan:</strong> @ViewData["TotalSongsCount"] st</p>
+
+    <!-- Länk till formulärvyn för att lägga till ny låt -->
+    <div class="mb-3">
+        <a asp-controller="Home" asp-action="Create" class="btn btn-primary">
+            + Lägg till ny låt
+        </a>
+    </div>
+
+    <!-- 3. Visar data från den starkt typade modellen (List<Song>) -->
     <h3>Dina Låtar</h3>
     @if (Model != null && Model.Any())
     {
@@ -18,7 +37,7 @@
                     <th>Längd</th>
                     <th>Artist</th>
                     <th>Album</th>
-                    <th>Åtgärd</th>
+                    <th>Detaljer</th>
                 </tr>
             </thead>
             <tbody>
