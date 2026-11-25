@@ -1,24 +1,31 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using PlaylistApp.Models;
 
-namespace PlaylistApp.Controllers;
-
-public class HomeController : Controller
+namespace PlaylistApp.Controllers
 {
-    public IActionResult Index()
+    public class HomeController : Controller
     {
-        return View();
-    }
+        // Testdata
+        private List<Song> GetSampleSongs()
+        {
+            return new List<Song>
+            {
+                new Song { Id = 1, Name = "Levitating", Length = 203, ArtistName = "Dua Lipa", AlbumName = "Future Nostalgia" },
+                new Song { Id = 2, Name = "Don't Start Now", Length = 183, ArtistName = "Dua Lipa", AlbumName = "Future Nostalgia" },
+                new Song { Id = 3, Name = "Save Your Tears", Length = 215, ArtistName = "The Weeknd", AlbumName = "After Hours" }
+            };
+        }
 
-    public IActionResult Privacy()
-    {
-        return View();
-    }
+        // 1. STARTSIDA / ÖVERSIKT (Vy 1)
+        public IActionResult Index()
+        {
+            var songs = GetSampleSongs();
 
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            ViewBag.Message = "Välkommen till din musikapplikation!";
+            ViewData["TotalSongsCount"] = songs.Count;
+
+            return View(songs);
+        }
+
     }
 }
