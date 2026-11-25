@@ -16,7 +16,7 @@ namespace PlaylistApp.Controllers
             };
         }
 
-        // 1. STARTSIDA / ÖVERSIKT (Vy 1)
+        // 1. STARTSIDA / INDEX (Vy 1)
         public IActionResult Index()
         {
             var songs = GetSampleSongs();
@@ -27,5 +27,37 @@ namespace PlaylistApp.Controllers
             return View(songs);
         }
 
+        // 2. DETALJSIDA / DETAILS(Vy 2)
+        public IActionResult Details(int id)
+        {
+            var songs = GetSampleSongs();
+            var song = songs.FirstOrDefault(s => s.Id == id);
+
+            if (song == null)
+            {
+                return NotFound();
+            }
+
+            return View(song);
+        }
+
+        // 3. FORMULÄRSIDA / CREATE - VISA (Vy 3)
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        // 3. FORMULÄRSIDA - TA EMOT INMATNING
+        [HttpPost]
+        public IActionResult Create(Song newSong)
+        {
+            if (ModelState.IsValid)
+            {
+                return RedirectToAction("Index");
+            }
+
+            return View(newSong);
+        }
     }
 }

@@ -1,0 +1,29 @@
+@model PlaylistApp.Models.Song
+
+@{
+    ViewData["Title"] = "Låtdetaljer";
+}
+
+<div class="container mt-4">
+    <h2>@ViewData["Title"]</h2>
+    <p class="text-muted">Detaljerad information om den valda låten.</p>
+
+    @if (Model != null)
+    {
+        <div class="card col-md-6 shadow-sm mt-4">
+            <div class="card-header bg-dark text-white">
+                <h4 class="mb-0">🎵 @Model.Name</h4>
+            </div>
+            <div class="card-body">
+                
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-warning">
+            Kunde inte hitta några detaljer för den angivna låten.
+        </div>
+        <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Tillbaka till listan</a>
+    }
+</div>

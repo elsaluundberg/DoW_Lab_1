@@ -1,0 +1,15 @@
+@model PlaylistApp.Models.Song
+
+@{
+    ViewData["Title"] = "Lägg till ny låt";
+}
+
+<div class="container mt-4">
+    <h2>@ViewData["Title"]</h2>
+    <p class="text-muted">Fyll i formuläret nedan för att lägga till en ny låt i spellistan.</p>
+
+    <form asp-controller="Home" asp-action="Create" method="post" class="mt-4 col-md-6">
+        
+    
+    </form>
+</div>
