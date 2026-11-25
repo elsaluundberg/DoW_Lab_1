@@ -8,8 +8,36 @@
     <h2>@ViewData["Title"]</h2>
     <p class="text-muted">Fyll i formuläret nedan för att lägga till en ny låt i spellistan.</p>
 
+    <!-- Formuläret skickar datan till [HttpPost] Create i HomeController -->
     <form asp-controller="Home" asp-action="Create" method="post" class="mt-4 col-md-6">
         
-    
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label">Låtnamn</label>
+            <input asp-for="Name" class="form-control" placeholder="T.ex. Levitating" required />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="ArtistName" class="form-label">Artist</label>
+            <input asp-for="ArtistName" class="form-control" placeholder="T.ex. Dua Lipa" required />
+            <span asp-validation-for="ArtistName" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="AlbumName" class="form-label">Album</label>
+            <input asp-for="AlbumName" class="form-control" placeholder="T.ex. Future Nostalgia" required />
+            <span asp-validation-for="AlbumName" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Length" class="form-label">Längd (sekunder)</label>
+            <input asp-for="Length" class="form-control" type="number" min="1" placeholder="T.ex. 203" required />
+            <span asp-validation-for="Length" class="text-danger"></span>
+        </div>
+
+        <div class="mt-4">
+            <button type="submit" class="btn btn-success">Spara låt</button>
+            <a asp-controller="Home" asp-action="Index" class="btn btn-secondary ms-2">Tillbaka till listan</a>
+        </div>
     </form>
 </div>
